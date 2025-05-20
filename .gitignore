@@ -1,0 +1,49 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Secrets and Credentials
+.env
+*.pem
+*.key
+*.p12
+*.crt
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+override.tf
+override.tf.json
+terraform.rc
+
+# Ansible
+*.retry
+*.vault-pass
+
+# OS-specific
+.DS_Store
+Thumbs.db
+*.swp
+
+# Dependency directories
+vendor/
+.bundle/
+.idea/
+.vscode/
+
+# Build outputs
+dist/
+build/
+
+# CI/CD
+.github/secrets/
+.github/workflows/.env
