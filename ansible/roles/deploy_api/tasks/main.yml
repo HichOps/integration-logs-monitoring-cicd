@@ -1,0 +1,45 @@
+- name: Install Git
+  apt:
+    name: git
+    state: present
+    update_cache: yes
+
+- name: Clone the API repository
+  git:
+    repo: "{{ api_repo_url }}"
+    dest: "{{ api_directory }}"
+    version: main  # Branche principale
+
+- name: Install API dependencies
+  command: npm install
+  args:
+    chdir: "{{ api_directory }}"
+
+- name: Create systemd service for API
+  copy:
+    dest: /etc/systemd/system/api.service
+    content: |
+      [Unit]
+      Description=Node.js API
+      After=network.target
+
+      [Service]
+      ExecStart=/usr/bin/node {{ api_directory }}/server.js
+      Restart=always
+      User=nobody
+      Group=nogroup
+      Environment=PATH=/usr/bin:/usr/local/bin
+      Environment=NODE_ENV=production
+      WorkingDirectory={{ api_directory }}
+
+      [Install]
+      WantedBy=multi-user.target
+
+- name: Reload systemd
+  command: systemctl daemon-reload
+
+- name: Start and enable API service
+  systemd:
+    name: api
+    state: started
+    enabled: true

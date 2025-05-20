@@ -1,0 +1,6 @@
+all:
+  hosts:
+    gcp_vm:
+      ansible_host: 35.187.164.88  # Remplacez par l'IP publique de votre VM
+      ansible_user: devops         # Utilisateur SSH (lié à votre clé)
+      ansible_ssh_private_key_file: /home/hichops/integration-logs-monitoring-cicd/.ssh/id_rsa

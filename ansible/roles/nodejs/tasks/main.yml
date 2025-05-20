@@ -1,0 +1,16 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Add Node.js GPG key
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+
+- name: Add Node.js repository
+  shell: curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+
+- name: Install Node.js
+  apt:
+    name: nodejs
+    state: present

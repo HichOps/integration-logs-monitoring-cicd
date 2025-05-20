@@ -1,0 +1,9 @@
+- name: Setup and deploy API
+  hosts: all
+  become: true  # Exécuter les commandes avec sudo
+  vars:
+    api_repo_url: "https://github.com/HichOps/integration-logs-monitoring-cicd.git"  # Remplacez par l'URL de votre dépôt
+    api_directory: "/opt/api"  # Chemin où l'API sera déployée
+  roles:
+    - role: nodejs
+    - role: deploy_api
