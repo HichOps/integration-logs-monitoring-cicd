@@ -1,7 +1,7 @@
 {
   "name": "api-example",
   "version": "1.0.0",
-  "description": "A simple API with health checks and metrics",
+  "description": "A simple Node.js API with health checks and metrics",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
